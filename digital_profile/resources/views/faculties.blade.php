@@ -7,18 +7,46 @@
         <h2>Факультеты, институты</h2>
         <br>
         <div class="container">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                @foreach($data as $el)
+            <div class="accordion mb-2" id="accordionExample">
+
+
                 <div class="accordion-item">
+                    @foreach($data as $el)
                     <h2 class="accordion-header" id="flush-headingOne">
-                        <a id = "{{ $el->fak_id }}" href="{{ route("profile") }}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+
+                        <button  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                 aria-expanded="true" aria-controls="collapseOne">
                            {{ $el->name }}
-                        </a>
+                        </button>
+
                     </h2>
 
-                @endforeach
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            @foreach($el->groups as $groups)
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="col-sm-12 p-2">{{ $groups->course }}</div>
+
+                                    @foreach($el->groups as $groups)
+                        <a class="btn btn-primary" href="#" role="button" id="get-users">{{ $groups->gruppa }}</a><div id="result"></div>
+                            @endforeach
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endforeach
+                    </div>
+
             </div>
         </div>
     </div>
+
+                </div>
+
+            </div>
+        </div>
 @endsection
 

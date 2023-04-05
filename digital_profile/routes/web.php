@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/main', [MainController::class, 'main'])->name('main');
     Route::get('/faculties/profile', [MainController::class, 'profile'])->name('profile');
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/role', [AdminController::class, 'role'])->name('role');
 
 
 

@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Faculties extends Model
+class Group extends Model
 {
     use HasFactory;
-    protected $table = 'faculties';
 
-    public function groups()
+    protected $table = 'groups';
+
+    public function faculty()
     {
-        return $this->hasMany(Group::class, 'fak_id', 'fak_id');
+        return $this->belongsTo(Faculties::class, 'fak_id', 'fak_id');
     }
-
-
 }
