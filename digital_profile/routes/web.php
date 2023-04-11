@@ -4,6 +4,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Http\Request;
 
 
 /*
@@ -35,9 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/role', [AdminController::class, 'role'])->name('role');
-
-
-
+    Route::get('/faculties/gruppa={gruppa}', [MainController::class, 'show_students'])->name('list');
 
 });
 

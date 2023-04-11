@@ -23,5 +23,11 @@ class MainController extends Controller
 
 
     }
+    public function show_students(Request $request, $gruppa) {
+        $gruppa = $request->get('gruppa');
+        return view('list', [
+            'gruppa'=> $gruppa]);
+
+    }
 
 }

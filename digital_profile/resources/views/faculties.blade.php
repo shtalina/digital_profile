@@ -23,9 +23,9 @@
                                     <div class="col-sm-2">
                                         <div class="col-sm-12 p-2" >{{$groups->course}}</div>
                                         <div class="list-group p-1">
-                                            @foreach($el->groups as $gr)
-                                            <a href="#" class="list-group-item ">{{$gr->gruppa}}</a>
-                                            @endforeach
+
+                                            <a href="{{route("list", ['gruppa' => $groups->gruppa])}}"  class="list-group-item">{{$groups->gruppa}}</a>
+
                                         </div>
                                     </div>
                                     @endforeach
