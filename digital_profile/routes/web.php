@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/role', [AdminController::class, 'role'])->name('role');
-    Route::get('/faculties/gruppa={gruppa}', [MainController::class, 'show_students'])->name('list');
+    Route::get('/faculties/gruppa={gruppa}', [MainController::class, 'number_group'])->name('list');
 
 });
 

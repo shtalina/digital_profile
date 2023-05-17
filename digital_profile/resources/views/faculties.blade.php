@@ -7,7 +7,7 @@
         <h2>Факультеты, институты</h2>
         <br>
         <div class="container" >
-            @foreach($data as $el)
+            @foreach($faculty as $el)
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne{{$el->fak_id}}">
@@ -19,14 +19,15 @@
 
                             <div class="accordion-body">
                                 <div class="row">
-                                    @foreach($el->groups as $groups)
+                                    @foreach($el->groups->sortBy('course')->groupBy('course') as $key => $item)
                                     <div class="col-sm-2">
-                                        <div class="col-sm-12 p-2" >{{$groups->course}}</div>
+                                        <div class="col-sm-12 p-2" >Курс {{$key}}</div>
+                                        @foreach($item as $val)
                                         <div class="list-group p-1">
-
-                                            <a href="{{route("list", ['gruppa' => $groups->gruppa])}}"  class="list-group-item">{{$groups->gruppa}}</a>
+                                            <a href="{{route("list", ['gruppa' => $val->gruppa])}}"  class="list-group-item">{{$val->gruppa}}</a>
 
                                         </div>
+                                        @endforeach
                                     </div>
                                     @endforeach
 
