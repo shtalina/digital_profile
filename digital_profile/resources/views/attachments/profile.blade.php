@@ -7,9 +7,14 @@
     <div class="container" align="center">
 
     </div>
-    <br>
-
-    <div class = "container">
+     <div class = "container">
+        @foreach($info as $em)
+        <a href="/group?n={{$em->gruppa}}" class="btn btn-outline-success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+            </svg> Cписок группы</a>
+        @endforeach
         <h2 align="center"><b>Цифровой профиль студента</b></h2>
 
         <hr>
@@ -20,7 +25,9 @@
                     <div class="card" style="width: 18rem;">
                         <img src="https://avatars.mds.yandex.net/i?id=147f7ba5f75c188df3fd307fd0e358575aa3603e-9268554-images-thumbs&n=13" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <p align="center">shtalina03@gmail.com</p>
+                            @foreach($info as $em)
+                            <p align="center">{{$em->email}}</p>
+                            @endforeach
                         </div>
                     </div>
                     <br>
@@ -54,32 +61,30 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6 themed-grid-col">
+                @foreach($info as $data)
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
                         <tr >
                             <td><b>ФИО</b></td>
-                            <td id="fio">Шталина Екатерина Сергеевна</td>
+                            <td id="fio">{{$data->fio}}</td>
                         </tr>
                         <tr>
                             <td><b>Факультет</b></td>
-                            <td>ФМФ</td>
+                            <td>{{$data->facultet}}</td>
                         </tr>
                         <tr>
                             <td><b>Курс</b></td>
-                            <td>3</td>
+                            <td>{{$data->course}}</td>
                         </tr>
                         <tr>
                         <tr>
                             <td><b>Направление</b></td>
-                            <td>09.03.02 Информационные системы и технологии</td>
+                            <td>{{$data->spec_napravl}}</td>
                         </tr>
-                        <td><b>Профиль</b></td>
-                        <td>Информационные системы и технологии в образовании</td>
-                        </tr>
-
-                        <tr>
+                       <tr>
                             <td><b>Кафедра</b></td>
                             <td>Кафедра информатики</td>
                         </tr>
@@ -87,6 +92,7 @@
                         </tbody>
                     </table>
                 </div>
+                @endforeach
                 <br>
                 <h4><b>Трек активности</b></h4>
                 <br>
@@ -108,13 +114,17 @@
             </div>
             <div class="col-md-3 themed-grid-col">
                 <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Достижения</h5>
+                    @foreach($info as $data)
+                        <a href="{{route("attachments.marks", ['id'=>$data->id])}}" class="btn btn-outline-success btn-lg">Успеваемость</a>
+
+                        <div class="card-body">
+
+                        <h5 class="card-title">Портфолио</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{route("attachments.study", ['id'=>$data->id])}}" class="list-group-item d-flex justify-content-between align-items-center" >
                                 Учёба
                                 <span class="badge bg-primary rounded-pill">98</span>
-                            </li>
+                            </a>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Общество
                                 <span class="badge bg-primary rounded-pill">2</span>
@@ -135,7 +145,9 @@
 
 
                     </div>
+                    @endforeach
                 </div>
+
                 <br>
                 <div class="card text-center">
                     <div class="card-header">

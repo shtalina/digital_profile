@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function profile(){
+    public function profile_pr(){
         return view('profile');
     }
     public function main(){
@@ -24,12 +24,18 @@ class MainController extends Controller
 
 
     }
-    public function number_group (Request $request, $gruppa) {
-        $group_n =isset($post['=']);
+    public function number_group () {
+        $post = $_GET;
+
+        $group_n = isset($post['n']) && !empty($post['n']) ? $post['n'] : null;
+        if (is_null($group_n)) {
+            return abort(404);
+        }
         $group = Group::where('gruppa', $group_n)->value('gruppa');
         $student = Students::all();
-        return view('list',compact(['gruppa', 'student']));
 
-    }
+        return view('list',compact(['group', 'student']));
+        }
+
 
 }

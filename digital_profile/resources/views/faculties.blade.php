@@ -24,7 +24,7 @@
                                         <div class="col-sm-12 p-2" >Курс {{$key}}</div>
                                         @foreach($item as $val)
                                         <div class="list-group p-1">
-                                            <a href="{{route("list", ['gruppa' => $val->gruppa])}}"  class="list-group-item">{{$val->gruppa}}</a>
+                                            <a href="/group?n={{$val->gruppa}}"  class="list-group-item">{{$val->gruppa}}</a>
 
                                         </div>
                                         @endforeach

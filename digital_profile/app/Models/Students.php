@@ -10,6 +10,7 @@ class Students extends Model {
     protected $table = 'students';
 
     public function students (){
+        return $this->hasMany(Files::class, 'id', 'stud_id');
 
     }
 }
